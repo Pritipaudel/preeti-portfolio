@@ -9,7 +9,7 @@ export function TechBadge({ name }: TechBadgeProps) {
   const logoSrc = SKILL_LOGO[name];
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200/80 bg-zinc-50 px-2.5 py-1.5 text-xs font-medium text-zinc-700 dark:border-zinc-600/80 dark:bg-zinc-800 dark:text-zinc-300">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300/80 bg-white/50 px-3 py-1 text-xs font-mono text-text-primary dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
       {logoSrc ? (
         <Image
           src={logoSrc}

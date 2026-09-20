@@ -7,14 +7,10 @@ import { Skills } from "@/sections/Skills";
 import { Projects } from "@/sections/Projects";
 import { Experience } from "@/sections/Experience";
 import { Contact } from "@/sections/Contact";
-import { useCvViewer } from "@/lib/CvViewerContext";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
-import { SectionDivider } from "@/components/SectionDivider";
 
 export default function Home() {
-  const { openCv } = useCvViewer();
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,17 +19,13 @@ export default function Home() {
     >
       <ScrollProgress />
       <BackToTop />
-      <Hero onViewCv={openCv} />
-      <SectionDivider variant="gradient" />
+      <Hero />
       <About />
-      <SectionDivider variant="line" />
       <Skills />
-      <SectionDivider variant="gradient" />
       <Projects />
-      <SectionDivider variant="line" />
       <Experience />
-      <SectionDivider variant="gradient" />
       <Contact />
     </motion.div>
   );
 }
+

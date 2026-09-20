@@ -1,14 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { CvViewerProvider } from "@/lib/CvViewerContext";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
@@ -20,22 +31,23 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Priti Paudel Jaisi | Portfolio",
+  title: "Priti Paudel Jaisi | Software & AI/ML Portfolio",
   description:
-    "CSIT graduate focused on AI and full-stack development. Building intelligent applications and 3D rendering pipelines. Based in Kathmandu, Nepal.",
+    "CSIT student focused on AI/ML, Data Engineering, and Intelligent Systems. Building practical applications and data pipelines.",
   keywords: [
     "Priti Paudel Jaisi",
     "portfolio",
     "developer",
     "AI",
-    "full-stack",
+    "ML",
+    "Data Engineering",
     "Kathmandu",
   ],
   authors: [{ name: "Priti Paudel Jaisi", url: "https://github.com/Pritipaudel" }],
   openGraph: {
-    title: "Priti Paudel Jaisi | Portfolio",
+    title: "Priti Paudel Jaisi | Software & AI/ML Portfolio",
     description:
-      "CSIT graduate focused on AI and full-stack development. Building intelligent applications.",
+      "CSIT student focused on AI/ML, Data Engineering, and Intelligent Systems.",
     type: "website",
   },
   robots: "index, follow",
@@ -48,12 +60,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable} font-sans bg-bg-primary dark:bg-bg-dark text-text-primary dark:text-zinc-200 antialiased`}>
         <ThemeProvider>
           <CvViewerProvider>
             <Navbar />
             <main>{children}</main>
-            <Footer />
           </CvViewerProvider>
         </ThemeProvider>
       </body>

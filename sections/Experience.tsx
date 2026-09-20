@@ -1,111 +1,65 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { EXPERIENCE, EXPERIENCE_LOGOS } from "@/lib/constants";
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, x: -16 },
-  show: { opacity: 1, x: 0 },
-};
+import { EXPERIENCE } from "@/lib/constants";
 
 export function Experience() {
   return (
-    <section
-      id="experience"
-      className="section-padding bg-zinc-50 dark:bg-zinc-900/30"
-      aria-labelledby="experience-heading"
-    >
-      <div className="container-narrow">
+    <section id="experience" className="bg-bg-primary dark:bg-bg-dark pt-16 pb-32">
+      <div className="w-full max-w-none px-6 md:px-12 lg:px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14"
+          className="mb-16 md:mb-24"
         >
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent dark:text-accent-light">
-            Where I&apos;ve worked
-          </span>
-          <h2
-            id="experience-heading"
-            className="mt-2 text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl"
-          >
-            Experience
+          <h2 className="flex items-baseline gap-4 mb-6">
+            <span className="text-accent-red font-heading font-black text-6xl md:text-7xl lg:text-8xl">04</span>
+            <span className="font-heading font-black text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-text-primary dark:text-white">EXPERIENCE</span>
           </h2>
+          <p className="text-xl md:text-2xl text-text-secondary dark:text-zinc-400 font-medium">
+            Where I've worked and what I've accomplished.
+          </p>
         </motion.div>
 
-        <motion.div
-          className="mt-12 relative border-l-2 border-zinc-200 pl-6 dark:border-zinc-700 sm:pl-8"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-        >
-          {EXPERIENCE.map((exp) => {
-            const logoSrc = EXPERIENCE_LOGOS[exp.company];
-            return (
-              <motion.div
-                key={`${exp.company}-${exp.role}`}
-                variants={item}
-                className="relative pb-12 last:pb-0"
-              >
-<motion.span
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                  className="absolute left-0 top-6 h-3 w-3 -translate-x-[7px] rounded-full bg-accent shadow-[0_0_0_4px] shadow-zinc-50 dark:bg-accent-light dark:shadow-zinc-900"
-                  aria-hidden
-                />
-                <div className="group rounded-2xl border border-zinc-200 bg-white p-0 shadow-soft transition-all duration-300 hover:border-accent/20 hover:shadow-soft-lg dark:border-zinc-700 dark:bg-zinc-800/50 dark:hover:border-accent/30">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-6 pb-4">
-                    {logoSrc && (
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-zinc-100/80 ring-1 ring-zinc-200/80 dark:bg-zinc-700/50 dark:ring-zinc-600/80">
-                        <Image
-                          src={logoSrc}
-                          alt=""
-                          width={56}
-                          height={56}
-                          className="h-full w-full object-contain p-1.5"
-                        />
-                      </div>
-                    )}
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
-                          {exp.company}
-                        </h3>
-                        <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <p className="mt-0.5 text-sm font-medium text-accent dark:text-accent-light">
-                        {exp.role}
-                      </p>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                        {exp.location}
-                      </p>
-                    </div>
-                  </div>
-                  <ul className="list-disc space-y-2 border-t border-zinc-100 px-6 py-4 pl-9 text-sm text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
+        <div className="flex flex-col border-t border-zinc-200 dark:border-zinc-800">
+          {EXPERIENCE.map((exp, index) => (
+            <motion.div
+              key={`${exp.company}-${exp.role}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-zinc-200 dark:border-zinc-800 transition-colors hover:bg-black/5 dark:hover:bg-white/5 px-4 -mx-4"
+            >
+              <div className="md:w-1/3 shrink-0">
+                <h3 className="text-2xl font-heading font-extrabold uppercase tracking-tight text-text-primary dark:text-white mb-2">
+                  {exp.company}
+                </h3>
+                <div className="font-mono text-xs uppercase tracking-[0.1em] text-accent-red mb-2">
+                  {exp.role}
+                </div>
+                <div className="font-mono text-xs uppercase tracking-[0.05em] text-zinc-500">
+                  {exp.period}
+                </div>
+              </div>
+              
+              <div className="md:w-2/3">
+                <div className="relative border-l border-zinc-300 dark:border-zinc-700 ml-2 md:ml-4">
+                  <ul className="space-y-6 text-text-primary dark:text-zinc-300 font-medium leading-relaxed list-none py-2">
                     {exp.points.map((point, i) => (
-                      <li key={i}>{point}</li>
+                      <li key={i} className="relative pl-8">
+                        <span className="absolute -left-[5px] top-2.5 w-2.5 h-2.5 rounded-full bg-bg-primary dark:bg-bg-dark border-2 border-accent-red"></span>
+                        <span>{point}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

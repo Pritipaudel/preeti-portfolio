@@ -2,83 +2,67 @@
 
 import { motion } from "framer-motion";
 import { SKILLS } from "@/lib/constants";
-import { SkillCard } from "@/components/SkillCard";
 
 const categories = [
-  { key: "frontend", label: "Frontend", items: SKILLS.frontend },
-  { key: "backend", label: "Backend", items: SKILLS.backend },
-  { key: "database", label: "Database", items: SKILLS.database },
-  { key: "devops", label: "DevOps & Tools", items: SKILLS.devops },
+  { key: "languages", label: "01 — Languages", items: SKILLS.languages },
+  { key: "libraries", label: "02 — Libraries", items: SKILLS.libraries },
+  { key: "data", label: "03 — Data & DB", items: SKILLS.data },
+  { key: "frameworks", label: "04 — Frameworks", items: SKILLS.frameworks },
+  { key: "genai", label: "05 — Gen AI", items: SKILLS.genai },
+  { key: "tools", label: "06 — Tools", items: SKILLS.tools },
 ] as const;
 
 export function Skills() {
-  let globalIndex = 0;
-
   return (
-    <section
-      id="skills"
-      className="section-padding relative overflow-hidden bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-900/40 dark:to-zinc-950"
-      aria-labelledby="skills-heading"
-    >
-      <div
-        className="absolute inset-0 -z-10 opacity-40"
-        style={{
-          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(79, 70, 229, 0.06) 0%, transparent 50%),
-            radial-gradient(circle at 80% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%)`,
-        }}
-        aria-hidden
-      />
-
-      <div className="container-wide">
+    <section id="skills" className="bg-bg-dark text-white pt-24 overflow-hidden relative">
+      <div className="w-full max-w-none px-6 md:px-12 lg:px-20 mb-20 md:mb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14 text-center"
+          className="mb-16 md:mb-24"
         >
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent dark:text-accent-light">
-            Tech stack
-          </span>
-          <h2
-            id="skills-heading"
-            className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl"
-          >
-            Skills
+          <h2 className="flex items-baseline gap-4 mb-6">
+            <span className="text-accent-red font-heading font-black text-6xl md:text-7xl lg:text-8xl">02</span>
+            <span className="font-heading font-black text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-white">SKILLS</span>
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
-            Technologies and tools I work with
+          <p className="text-xl md:text-2xl text-zinc-400 font-medium">
+            What I reach for, and what I'm still learning.
           </p>
         </motion.div>
 
-        <div className="mt-14 space-y-16">
-          {categories.map(({ key, label, items }, catIndex) => (
+        <div className="flex flex-col border-t border-zinc-800">
+          {categories.map(({ key, label, items }, index) => (
             <motion.div
               key={key}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: catIndex * 0.08 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="group flex flex-col md:flex-row md:items-center gap-8 py-10 md:py-12 border-b border-zinc-800 hover:bg-white/5 transition-colors px-4 -mx-4"
             >
-              <h3 className="mb-6 flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-accent dark:text-accent-light">
-                <span className="h-px flex-1 max-w-12 rounded-full bg-accent/40 dark:bg-accent-light/40" />
-                {label}
-                <span className="h-px flex-1 max-w-12 rounded-full bg-accent/40 dark:bg-accent-light/40" />
-              </h3>
-              <ul
-                className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-                role="list"
-              >
-                {items.map((skill) => {
-                  const idx = globalIndex++;
-                  return (
-                    <li key={skill}>
-                      <SkillCard name={skill} index={idx} />
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-zinc-500 md:w-1/4 shrink-0">
+                {label.split("— ")[1] || label}
+              </div>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 md:w-3/4">
+                {items.map((item) => (
+                  <span key={item} className="text-2xl md:text-3xl font-medium text-white tracking-tight">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <div className="w-full overflow-hidden border-t border-b border-zinc-800 py-6 bg-black">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span key={i} className="text-6xl md:text-8xl font-heading font-black uppercase tracking-tight mx-8 text-zinc-800 opacity-20 select-none">
+              DATA PIPELINES <span className="text-accent-red opacity-100">•</span> MACHINE LEARNING <span className="text-accent-red opacity-100">•</span> BACKEND SYSTEMS <span className="text-accent-red opacity-100">•</span>{" "}
+            </span>
           ))}
         </div>
       </div>

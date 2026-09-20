@@ -12,23 +12,27 @@ const config: Config = {
     extend: {
       colors: {
         accent: {
-          DEFAULT: "#4f46e5",
-          hover: "#4338ca",
-          light: "#818cf8",
+          DEFAULT: "#C84B31",
+          red: "#C84B31",
+          light: "#E06B4F",
         },
         surface: {
-          DEFAULT: "#f8fafc",
-          elevated: "#ffffff",
+          DEFAULT: "#FFFFFF",
+          elevated: "#FAFAFA",
         },
-        dark: {
-          surface: "#18181b",
-          elevated: "#27272a",
-          border: "#3f3f46",
+        bg: {
+          primary: "#F5F2EB",
+          dark: "#121212",
         },
+        text: {
+          primary: "#1A1A1A",
+          secondary: "#666666",
+        }
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heading: ["var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-bricolage)", "system-ui", "sans-serif"],
+        mono: ["var(--font-jetbrains)", "monospace"],
       },
       boxShadow: {
         soft: "0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05)",

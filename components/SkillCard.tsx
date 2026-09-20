@@ -14,38 +14,36 @@ export function SkillCard({ name, index }: SkillCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-20px" }}
       transition={{
-        duration: 0.35,
-        delay: index * 0.03,
+        duration: 0.3,
+        delay: index * 0.02,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{
-        scale: 1.05,
-        y: -4,
-        transition: { duration: 0.2 },
-      }}
-      className="group relative flex flex-col items-center gap-3 rounded-2xl border border-zinc-200/80 bg-white/90 px-5 py-6 shadow-soft backdrop-blur-sm transition-all duration-300 hover:border-accent/25 hover:shadow-soft-lg hover:shadow-glow dark:border-zinc-700/80 dark:bg-zinc-800/80 dark:hover:border-accent/40 dark:hover:shadow-glow-dark"
+      whileHover={{ scale: 1.05 }}
+      className="inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-4 py-2 shadow-sm transition-colors hover:border-accent hover:bg-accent/5 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-accent dark:hover:bg-accent/10 m-1"
     >
-      <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-zinc-100/80 p-2 transition-colors duration-300 group-hover:bg-accent/10 dark:bg-zinc-700/80 dark:group-hover:bg-accent/20">
-        {logoSrc ? (
+      {logoSrc ? (
+        <div className="flex h-5 w-5 shrink-0 items-center justify-center">
           <Image
             src={logoSrc}
             alt=""
-            width={32}
-            height={32}
-            className="object-contain transition-transform duration-300 group-hover:scale-110"
+            width={20}
+            height={20}
+            className="object-contain"
             unoptimized
           />
-        ) : (
-          <span className="text-lg font-semibold text-accent opacity-80">
+        </div>
+      ) : (
+        <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 dark:bg-accent/20">
+          <span className="text-xs font-bold text-accent">
             {name.charAt(0)}
           </span>
-        )}
-      </div>
-      <span className="text-center text-sm font-medium text-zinc-700 dark:text-zinc-200">
+        </div>
+      )}
+      <span className="text-sm font-medium text-text-primary dark:text-zinc-200">
         {name}
       </span>
     </motion.div>

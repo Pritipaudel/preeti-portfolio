@@ -6,9 +6,6 @@
   html {
     scroll-behavior: smooth;
   }
-  body {
-    @apply bg-white text-zinc-800 antialiased dark:bg-zinc-950 dark:text-zinc-200;
-  }
   ::selection {
     @apply bg-accent/20 text-zinc-900 dark:text-white;
   }
@@ -41,4 +38,21 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.filter-sketch {
+  filter: grayscale(100%) contrast(1.2) sepia(10%);
 }
