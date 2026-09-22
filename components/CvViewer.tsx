@@ -192,7 +192,7 @@ export function CvViewer({ open, onClose }: CvViewerProps) {
                     Technical Skills
                   </h3>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    {(["languages", "aiml", "data", "frameworks", "tools"] as const).map((key, i) => (
+                    {(Object.keys(SKILLS) as Array<keyof typeof SKILLS>).map((key, i) => (
                       <motion.div
                         key={key}
                         custom={i}
